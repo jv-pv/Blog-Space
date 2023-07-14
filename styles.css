@@ -1,0 +1,52 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --step--2: clamp(0.69rem, calc(0.51rem + 0.97vw), 1.12rem);
+    --step--1: clamp(0.83rem, calc(0.59rem + 1.30vw), 1.40rem);
+    --step-0: clamp(1.00rem, calc(0.68rem + 1.71vw), 1.75rem);
+    --step-1: clamp(1.20rem, calc(0.78rem + 2.26vw), 2.19rem);
+    --step-2: clamp(1.44rem, calc(0.89rem + 2.96vw), 2.73rem);
+    --step-3: clamp(1.73rem, calc(1.00rem + 3.86vw), 3.42rem);
+    --step-4: clamp(2.07rem, calc(1.13rem + 5.03vw), 4.27rem);
+    --step-5: clamp(2.49rem, calc(1.27rem + 6.52vw), 5.34rem);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    background: whitesmoke;
+}
+
+main {
+    width: min(90%, 1000px);
+    margin-inline: auto;
+    max-width: fit-content;
+    overflow: auto;
+}
+
+.main-container {
+    outline: 1px solid red;
+    padding: 1rem;
+}
+
+.post-container:has(h1) {
+    font-size: var(--step-2);
+}
+
+.post-container:has(p) {
+    font-size: var(--step--1);
+}
+
+.post-container:nth-of-type(3) {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    background-color: slategray;
+    padding: max(1vh, 0.5rem);
+}
+
+
