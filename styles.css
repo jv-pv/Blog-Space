@@ -16,6 +16,7 @@
 }
 
 body {
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1;
@@ -28,22 +29,61 @@ main {
     margin-inline: auto;
     max-width: fit-content;
     overflow: auto;
+    margin-block-start: 4.5rem;
 }
 
-.main-container {
-    padding: 1rem;
+header {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 70px;
+    background-color: black;
 }
 
-.post-container:has(h1) {
+div span {
+    font-size: var(--step-0);
+}
+
+.header-inner-cont {
+    display: flex;
+    align-items: center;
+    width: min(90%, 1000px);
+    height: inherit;
+    margin-inline: auto;
+}
+
+.header-inner-cont nav {
+    margin-left: auto;
+}
+
+nav ul {
+    display: flex;
+    width: min(25%, 250px);
+    justify-content: space-between;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: var(--step--1);
+    margin-left: max(1rem, 1.5rem);
+}
+
+main:has(.post-container) h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.post-container h1 {
     font-size: var(--step-2);
 }
 
-.post-container:has(p) {
+.post-container p {
     font-size: var(--step--1);
 }
 
 .post-container:nth-of-type(3) {
-    word-wrap: break-word;
     white-space: pre-wrap;
     background-color: rgb(180, 185, 190);
     padding: max(1vh, 0.5rem);
@@ -52,4 +92,16 @@ main {
 
 .post-container:nth-of-type(3):has(h1) {
     color: black;
+}
+
+.post-container:nth-of-type(3):has(h1) h1 {
+    word-wrap: break-word;
+    font-size: var(--step-0);
+}
+
+@media screen and (max-width: 450px) {
+    nav ul {
+        flex-direction: column;
+        gap: 2px;
+    }
 }
