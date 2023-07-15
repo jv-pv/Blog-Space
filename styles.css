@@ -19,7 +19,8 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1;
-    background: whitesmoke;
+    background: darkslategray;
+    color: whitesmoke;
 }
 
 main {
@@ -30,7 +31,6 @@ main {
 }
 
 .main-container {
-    outline: 1px solid red;
     padding: 1rem;
 }
 
@@ -45,8 +45,11 @@ main {
 .post-container:nth-of-type(3) {
     word-wrap: break-word;
     white-space: pre-wrap;
-    background-color: slategray;
+    background-color: rgb(180, 185, 190);
     padding: max(1vh, 0.5rem);
+    border-radius: 10px;
 }
 
-
+.post-container:nth-of-type(3):has(h1) {
+    color: black;
+}
