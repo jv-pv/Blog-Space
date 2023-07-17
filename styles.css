@@ -81,20 +81,28 @@ main:has(.post-container) h1 {
     font-size: var(--step-1);
 }
 
+.post-container {
+    border-bottom: 2px solid whitesmoke;
+}
+
+.post-container h1 {
+    color: antiquewhite;
+}
+
 .post-container p {
     font-size: var(--step--1);
 }
 
-.post-container:nth-of-type(3) {
+/* .post-container:nth-of-type(3) {
     white-space: pre-wrap;
     background-color: rgb(180, 185, 190);
     padding: max(1vh, 0.5rem);
     border-radius: 10px;
-}
+} */
 
-.post-container:nth-of-type(3):has(h1) {
+/* .post-container:nth-of-type(3):has(h1) {
     color: black;
-}
+} */
 
 .post-container:nth-of-type(3):has(h1) h1 {
     word-wrap: break-word;
@@ -136,6 +144,7 @@ form :is(input, textarea) {
     padding: 0.5rem;
     font-family: inherit;
     font-size: 18px;
+    border-radius: 5px;
 }
 
 form :is(input, textarea)::placeholder {
@@ -149,6 +158,7 @@ textarea {
 button {
     padding: 0.5rem 0;
     margin-top: 1.35rem;
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 450px) {
