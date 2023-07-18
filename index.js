@@ -1,59 +1,61 @@
-let postArray = [];
-const form = document.querySelector('form')
-const postTitle = document.getElementById("post-title");
-const postBody = document.getElementById("post-body");
+let postsArray = [];
+const formEl = document.querySelector("form");
+const inputTitle = document.getElementById("post-title");
+const textareaBody = document.getElementById("post-body");
 
 function renderPosts() {
-  let html = "";
-  postArray.forEach((post) => {
-    html += `
-        <div class="post-container">
-            <h1>${post.title}</h1>
-            <p>${post.body}</p>
-        </div>
-        `;
-  });
-  document.querySelector(".post-wrapper").innerHTML = html;
+    const postWrapper = document.querySelector('.post-wrapper')
+    postWrapper.innerHTML = ""
+    postsArray.forEach(post => {
+        const postContainer = document.createElement('div')
+        postContainer.className = "post-container"
+        const postTitle = document.createElement('h1')
+        const postBody = document.createElement('p')
+        postTitle.innerText = post.title;
+        postBody.innerText = post.body;
+        postContainer.append(postTitle, postBody)
+        postWrapper.appendChild(postContainer)
+    })
+
 }
 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
   .then((response) => response.json())
   .then((data) => {
-    postArray = data.slice(0, 5);
+    postsArray = data.slice(0, 5);
     renderPosts();
   });
 
-form.addEventListener("submit", (e) => {
+formEl.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  let postTitleValue = inputTitle.value;
+  let postBodyValue = textareaBody.value;
+
   let newPost = {
-    title: postTitle.value,
-    body: postBody.value,
+    title: postTitleValue,
+    body: postBodyValue,
   };
-  const options = {
+
+  let options = {
     method: "POST",
     body: JSON.stringify(newPost),
+    cache: "no-cache",
     headers: {
       "Content-Type": "application/json",
     },
   };
+
   fetch("https://apis.scrimba.com/jsonplaceholder/posts", options)
     .then((response) => response.json())
-    .then((postData) => {
-      if (postTitle.value !== "" || postBody.value !== "") {
-        postArray.unshift(postData);
-        // Two ways to clear form. One uses a function, form.reset() uses a local method
-        // clearForm(postTitle, postBody);
-        form.reset()
+    .then((data) => {
+      if (inputTitle.value !== "" && textareaBody.value !== " ") {
+        postsArray.unshift(data);
+        formEl.reset();
         renderPosts();
       }
     });
 });
-
-function clearForm(title, body) {
-  title.value = "";
-  body.value = "";
-}
 
 // Alternate DOM Manipulation
 
