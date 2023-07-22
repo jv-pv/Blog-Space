@@ -49,7 +49,7 @@ formEl.addEventListener("submit", (e) => {
   fetch("https://apis.scrimba.com/jsonplaceholder/posts", options)
     .then((response) => response.json())
     .then((data) => {
-      if (inputTitle.value !== "" && textareaBody.value !== " ") {
+      if (inputTitle.value.trim() !== "" && textareaBody.value.trim() !== "") {
         postsArray.unshift(data);
         formEl.reset();
         renderPosts();
