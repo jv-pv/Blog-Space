@@ -5,18 +5,27 @@ const textareaBody = document.getElementById("post-body");
 
 function renderPosts() {
     const postWrapper = document.querySelector('.post-wrapper')
-    postWrapper.innerHTML = ""
+    // postWrapper.innerHTML = ""
+    // postsArray.forEach(post => {
+    //     const postContainer = document.createElement('div')
+    //     postContainer.className = "post-container"
+    //     const postTitle = document.createElement('h1')
+    //     const postBody = document.createElement('p')
+    //     postTitle.innerText = post.title;
+    //     postBody.innerText = post.body;
+    //     postContainer.append(postTitle, postBody)
+    //     postWrapper.appendChild(postContainer)
+    // })
+    let html = ''
     postsArray.forEach(post => {
-        const postContainer = document.createElement('div')
-        postContainer.className = "post-container"
-        const postTitle = document.createElement('h1')
-        const postBody = document.createElement('p')
-        postTitle.innerText = post.title;
-        postBody.innerText = post.body;
-        postContainer.append(postTitle, postBody)
-        postWrapper.appendChild(postContainer)
+      html += `
+        <div class="post-container">
+          <h1>${post.title}</h1>
+          <p>${post.body}</p>
+        </div>
+      `
     })
-
+    postWrapper.innerHTML = html
 }
 
 fetch("https://apis.scrimba.com/jsonplaceholder/posts")
