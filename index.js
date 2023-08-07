@@ -56,7 +56,12 @@ formEl.addEventListener("submit", (e) => {
   };
 
   fetch("https://apis.scrimba.com/jsonplaceholder/posts", options)
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response not ok')
+      }
+      return response.json()
+    })
     .then((data) => {
       if (inputTitle.value.trim() !== "" && textareaBody.value.trim() !== "") {
         postsArray.unshift(data);
